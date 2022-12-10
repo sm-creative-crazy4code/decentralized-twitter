@@ -1,0 +1,25 @@
+type TweetAdded @entity(immutable: true) {
+  id: Bytes!
+  tweeter: Bytes! # address
+  tweets_whoTweeted: Bytes! # address
+  tweets_tweetDescription: String! # string
+  tweets_isDeleted: Boolean! # bool
+  tweets_isLiked: Boolean! # bool
+  tweets_uniqueid: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TweetDeleted @entity(immutable: true) {
+  id: Bytes!
+  tweeter: Bytes! # address
+  tweets_whoTweeted: Bytes! # address
+  tweets_tweetDescription: String! # string
+  tweets_isDeleted: Boolean! # bool
+  tweets_isLiked: Boolean! # bool
+  tweets_uniqueid: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

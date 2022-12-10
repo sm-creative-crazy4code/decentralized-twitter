@@ -1,0 +1,26 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Twitter
+    network: goerli
+    source:
+      address: "0x3c3E715161147D8F423B285e36b8717717c22376"
+      abi: Twitter
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TweetAdded
+        - TweetDeleted
+      abis:
+        - name: Twitter
+          file: ./abis/Twitter.json
+      eventHandlers:
+        - event: TweetAdded(indexed address,(indexed address,string,bool,bool,uint256))
+          handler: handleTweetAdded
+        - event: TweetDeleted(indexed address,(indexed address,string,bool,bool,uint256))
+          handler: handleTweetDeleted
+      file: ./src/twitter.ts
